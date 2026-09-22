@@ -13,7 +13,7 @@ import java.nio.file.StandardOpenOption;
 public class ReactKit implements StackKit {
 
     @Override
-    public void generateBlueprint(Path targetRoot) throws IOException {
+    public void generateBlueprint(Path targetRoot, String projectName) throws IOException {
         System.out.println("⚛️ Injecting modular React template blueprint...");
 
         Path srcDir = targetRoot.resolve("src");
@@ -26,13 +26,23 @@ public class ReactKit implements StackKit {
                   "private": true,
                   "version": "1.0.0",
                   "type": "module",
+                  "scripts": {
+                    "dev": "vite",
+                    "build": "vite build",
+                    "preview": "vite preview"
+                  },
                   "dependencies": {
                     "react": "^18.2.0",
                     "react-dom": "^18.2.0"
+                  },
+                  "devDependencies": {
+                    "vite": "^5.2.0",
+                    "@vitejs/plugin-react": "^4.2.0"
                   }
                 }
                 """;
-        Files.writeString(packageJsonPath, packageJsonContent, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        Files.writeString(packageJsonPath, packageJsonContent, StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING);
 
         Path htmlPath = targetRoot.resolve("index.html");
         String htmlContent = """
@@ -48,7 +58,8 @@ public class ReactKit implements StackKit {
                   </body>
                 </html>
                 """;
-        Files.writeString(htmlPath, htmlContent, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        Files.writeString(htmlPath, htmlContent, StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING);
 
         Path mainJsxPath = srcDir.resolve("main.jsx");
         String mainJsxContent = """
@@ -62,7 +73,8 @@ public class ReactKit implements StackKit {
                   </React.StrictMode>,
                 )
                 """;
-        Files.writeString(mainJsxPath, mainJsxContent, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        Files.writeString(mainJsxPath, mainJsxContent, StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING);
 
         Path appJsxPath = srcDir.resolve("App.jsx");
         String appJsxContent = """
@@ -78,6 +90,19 @@ public class ReactKit implements StackKit {
                 
                 export default App;
                 """;
-        Files.writeString(appJsxPath, appJsxContent, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        Files.writeString(appJsxPath, appJsxContent, StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING);
+
+        Path viteConfigPath = targetRoot.resolve("vite.config.js");
+        String viteConfigContent = """
+                import { defineConfig } from 'vite'
+                import react from '@vitejs/plugin-react'
+                
+                export default defineConfig({
+                  plugins: [react()],
+                })
+                """;
+        Files.writeString(viteConfigPath, viteConfigContent, StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING);
     }
 }

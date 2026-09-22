@@ -23,7 +23,7 @@ public class ScaffoldManager {
      * out to modular architecture kits.
      *
      * @param projectName The target directory name for the new project.
-     * @param stack The designated technology framework {@link ProjectStack}.
+     * @param stack       The designated technology framework {@link ProjectStack}.
      */
     public void executeScaffold(String projectName, ProjectStack stack) {
         if (projectName == null || stack == null) {
@@ -41,11 +41,11 @@ public class ScaffoldManager {
             // Layer 3: Choose modular target execution based on polymorphism matching our enum
             StackKit selectedKit = switch (stack) {
                 case SPRING -> new SpringKit();
-                case REACT  -> new ReactKit();
+                case REACT -> new ReactKit();
             };
 
             // Invoke the separate toolkit dynamically
-            selectedKit.generateBlueprint(targetRoot);
+            selectedKit.generateBlueprint(targetRoot, projectName);
 
             System.out.println("🚀 Scaffolding for project '" + projectName + "' completed successfully!");
 

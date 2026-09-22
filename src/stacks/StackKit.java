@@ -16,5 +16,5 @@ public interface StackKit {
      * @param targetRoot The target path to the root folder of the project being generated.
      * @throws IOException If any physical disk write processes fail.
      */
-    void generateBlueprint(Path targetRoot) throws IOException;
+    void generateBlueprint(Path targetRoot, String projectName) throws IOException;
 }
