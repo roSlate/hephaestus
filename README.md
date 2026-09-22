@@ -1,4 +1,5 @@
 Prompts that maybe worked:
+
 ![img1.png](screenshots/img1.png)
 
 ![img.png](screenshots/img2.png)
@@ -7,10 +8,12 @@ Prompts that maybe worked:
 
 
 Prompts that might have not worked:
+
 ![img.png](screenshots/img3.png)
 
 
 Gemini trying "to please me":
+
 ![img.png](screenshots/img4.png)
 
 

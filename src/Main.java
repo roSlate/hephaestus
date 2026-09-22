@@ -5,7 +5,6 @@ import scaffold.ScaffoldManager;
  * The core orchestration engine and entry execution thread for the Hephaestus automation application.
  * Manages the sequential workflow from configuration ingestion down to the final folder architecture generation.
  *
- * @author Rodrigo Diogo
  * @version 2.0
  */
 public class Main {
@@ -29,7 +28,7 @@ public class Main {
             System.out.println("Project Stack: " + settings.getProjectStack());
             System.out.println("------------------------------------------------");
 
-            // 3. THIS IS THE MISSING LINK: Instantiate the scaffold engine and build!
+            // 3. Instantiate the scaffold engine and build
             ScaffoldManager scaffold = new ScaffoldManager();
             scaffold.executeScaffold(settings.getProjectName(), settings.getProjectStack());
         }
