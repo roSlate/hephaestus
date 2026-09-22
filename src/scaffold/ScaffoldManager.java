@@ -47,10 +47,16 @@ public class ScaffoldManager {
             // Invoke the separate toolkit dynamically
             selectedKit.generateBlueprint(targetRoot, projectName);
 
+            initializeGitRepository(targetRoot);
+
             System.out.println("🚀 Scaffolding for project '" + projectName + "' completed successfully!");
 
         } catch (IOException e) {
             System.out.println("❌ Critical Error during scaffolding execution: " + e.getMessage());
+
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println("❌ Critical Error: Git initialization was interrupted.");
         }
     }
 
@@ -80,5 +86,17 @@ public class ScaffoldManager {
                 node_modules/
                 """;
         Files.writeString(gitignorePath, gitignoreContent, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+    }
+
+    private void initializeGitRepository(Path targetRoot) throws IOException, InterruptedException {
+        ProcessBuilder processBuilder = new ProcessBuilder("git", "init");
+        processBuilder.directory(targetRoot.toFile());
+
+        Process process = processBuilder.start();
+        int exitCode = process.waitFor();
+
+        if (exitCode != 0) {
+            throw new IOException("Failed to initialize Git repository.");
+        }
     }
 }
