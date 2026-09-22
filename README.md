@@ -29,7 +29,7 @@ Regarding hephaestus:
 ```
 
                ┌──────────────────────────┐
-               │    1. Entry Point Layer  │  <-- Receives name & stack from Main
+               │    1. Entry Point Layer  │  <-- Receives name & stack from main.Main
                └────────────┬─────────────┘
                             │
                ┌────────────▼─────────────┐
