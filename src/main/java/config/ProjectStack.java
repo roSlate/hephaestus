@@ -11,7 +11,9 @@ import java.util.Optional;
 public enum ProjectStack {
     SPRING,
 
-    REACT;
+    REACT,
+
+    DJANGO;
 
     /**
      * Safely wraps the framework lookup inside an Optional container.

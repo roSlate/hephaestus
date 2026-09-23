@@ -1,6 +1,7 @@
 package scaffold;
 
 import config.ProjectStack;
+import stacks.DjangoKit;
 import stacks.ReactKit;
 import stacks.SpringKit;
 import stacks.StackKit;
@@ -42,6 +43,7 @@ public class ScaffoldManager {
             StackKit selectedKit = switch (stack) {
                 case SPRING -> new SpringKit();
                 case REACT -> new ReactKit();
+                case DJANGO -> new DjangoKit();
             };
 
             // Invoke the separate toolkit dynamically

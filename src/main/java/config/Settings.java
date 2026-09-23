@@ -43,7 +43,7 @@ public class Settings {
             if (parsedStack.isPresent()) {
                 this.projectStack = parsedStack.get();
             } else {
-                System.out.println("❌ Error: 'project.stack' must be either 'spring' or 'react'!");
+                System.out.println("❌ Error: Stack not supported by Hephaestus.");
                 this.projectStack = null;
             }
 
