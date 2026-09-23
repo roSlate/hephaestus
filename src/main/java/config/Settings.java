@@ -21,8 +21,11 @@ public class Settings {
      * and performs strict data integrity checks to guarantee subsequent operations are safe.
      */
     public void loadSettings() {
+        loadSettings("hephaestus.properties");
+    }
+
+    public void loadSettings(String configFileName) {
         Properties prop = new Properties();
-        String configFileName = "hephaestus.properties";
 
         try (InputStream input = new FileInputStream(configFileName)) {
             prop.load(input);

@@ -1,6 +1,36 @@
 # On Hephaestus and a small journey regarding working with three different LLMs
 
+The goal for this project was to create a small scaffolding tool that would generate a basic skeleton for a Spring Boot,
+React, or Django project, based on a configuration file. At the same time, it was also about how different LLMs and AIs
+behaved when asked to help with the same task, and how they compared to each other.
+
 ## 1. Claude, Gemini, and ChatGPT
+
+It's important to take into account that this was a (very) small project, and it's not a definitive, scientific comparison
+based on deep research. It's more a retelling of personal experiences and general impressions, and not an exhaustive analysis.
+
+In the end, Gemini was very "resilient" when it came to its free usage, but it was also very "polite" and tried to 
+please me, even when it was making serious mistakes. It required quite a bit of handholding as it didn't really take
+architecture and good practices into account, and it was very verbose in its explanations. It also had a tendency to 
+hallucinate and make up things that didn't exist. So, after building a lot of the code and the overall project with Gemini,
+I took debugging and fixing over with Claude. Claude was much more concise and to the point, and it was able to catch 
+many of the mistakes I made with Gemini (namely a lot of the specifics regarding what each stack needed for their scaffolding). 
+
+GPT, somewhat humorously, was able to catch a few things that both Claude and Gemini didn't notice, so using all three
+together at different points was a strength in itself; however, in my opinion, Claude was the most useful of them all 
+for this particular project as it actively considers good software design, scalability and maintainability, and doesn't
+try to glue forcefully together something right away.
+
+Copilot was also used to help with some of the boilerplate code, but it was not as useful as the other three LLMs for 
+this particular project, at least regarding code as I didn't use the built-in chat too much (it, was, however, very useful 
+for writing the README).
+
+When offered the same document in their initial prompts, three things were very clear: 
+- All three can be quite literal and rigid in their interpretation of the task;
+- They have extremely different tones (Gemini is very uppity and enthusiastic, Claude is  concise and to the point, and 
+GPT is friendly and reassuring);
+- Given the task, all three, to differing degrees, try to decide for you on a solution, schedule and intent (on this front,
+GPT was the most "policing" of three).
 
 Prompts that maybe worked:
 ![img1.png](screenshots/img1.png)
